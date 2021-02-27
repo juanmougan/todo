@@ -1,6 +1,7 @@
 package com.github.juanmougan.todo.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -19,7 +20,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class TodoControllerTest {
+class TodoControllerIT {
 
   private final List<Todo> expectedTodos = List.of(
       Todo.builder()
@@ -53,6 +54,5 @@ class TodoControllerTest {
     // THEN all are returned
     assertThat(todosList).extracting(Todo::getTitle)
         .containsExactlyInAnyOrder("Practice Java", "Go to the supermarket");
-
   }
 }
